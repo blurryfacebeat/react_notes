@@ -1,0 +1,17 @@
+// App.js //
+import React from 'react';
+import './App.css';
+
+class App extends React.Component {
+  render() {
+    return (
+      // Вместо class нужно использовать className
+      <div className="App">
+        <h1>Hello World!</h1>
+      </div>
+      // <p>AAA</p> - должен быть корневой элемент, вне дива App этот <p></p> выдаст ошибку
+    );
+  }
+}
+
+export default App;
