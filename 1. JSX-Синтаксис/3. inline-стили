@@ -1,0 +1,19 @@
+// App.js //
+import React from 'react';
+import './App.css';
+
+class App extends React.Component {
+  render() {
+    const divStyle = {
+      'textAlign': 'center'
+    }
+
+    return (
+      <div style={divStyle}>
+        <h1 style={{ 'color': 'blue', 'fontSize': '48px' }}>Hello World!</h1>
+      </div>
+    );
+  }
+}
+
+export default App;
