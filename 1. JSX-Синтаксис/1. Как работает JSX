@@ -1,0 +1,42 @@
+// App.js //
+import React from 'react';
+import './App.css';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        {/* Замена v-for из vue */}
+        {books.map((book, index) => (
+          <div key={index}>{book.name}: {book.age}</div>
+        ))}
+      </div>
+    );
+    
+    // Так работает return()
+    // return React.createElement(
+    //   'div',
+    //   {
+    //     className: 'App'
+    //   },
+    //   React.createElement(
+    //     'h1',
+    //     null,
+    //     'Hello World'
+    //   )
+    // )
+  }
+}
+
+const books = [
+  {
+    name: 'Harry Potter',
+    age: 2020
+  },
+  {
+    name: 'Taras Bulba',
+    age: 2013
+  }
+];
+
+export default App;
