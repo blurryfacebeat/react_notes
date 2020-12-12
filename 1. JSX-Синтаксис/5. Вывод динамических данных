@@ -1,0 +1,13 @@
+// Car.js //
+import React from 'react';
+
+const Car = () => {
+  return (
+    <div>
+      <p>Компонент с машинками</p>
+      <p>Тут пример <strong>{1 + 1}</strong></p>
+    </div>
+  );
+};
+
+export default Car;
