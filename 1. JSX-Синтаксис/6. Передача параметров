@@ -1,0 +1,36 @@
+// App.js //
+import React from 'react';
+import './App.css';
+import Car from  './Components/Car/Car';
+
+class App extends React.Component {
+  render() {
+    const divStyle = {
+      'textAlign': 'center'
+    }
+
+    return (
+      <div style={divStyle}>
+        <h1>Hello World!</h1>
+        <Car name={'Ford'} year={2018} />
+        <Car name="Mazda" year={2016} />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+// Car.js //
+import React from 'react';
+
+const Car = (props) => {
+  return (
+    <div>
+      <h3>Car name: {props.name}</h3>
+      <p>Year: <strong>{props.year}</strong></p>
+    </div>
+  );
+};
+
+export default Car;
