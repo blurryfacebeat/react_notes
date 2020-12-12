@@ -1,0 +1,33 @@
+// Один способ: //
+// Car.js //
+function Car() {
+  return(
+    <h2>Класс с машинками</h2>
+  );
+}
+
+export default Car;
+
+// Второй способ //
+// Car.js //
+// const car = () => {
+//   return (
+//     <div>Компонент с машинками</div>
+//   )
+// }
+
+const car = () => (
+  <div>
+    Компонент с машинками
+    <strong>test</strong>
+  </div>
+);
+
+export default car;
+
+// export default () => {
+//   <div>
+//     Компонент с машинками
+//     <strong>test</strong>
+//   </div>
+// }
