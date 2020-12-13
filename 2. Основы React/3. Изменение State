@@ -1,0 +1,48 @@
+// App.js //
+import React from 'react';
+import './App.css';
+import Car from  './Components/Car/Car';
+
+class App extends React.Component {
+  state = {
+    cars: [
+      {
+        name: 'Ford',
+        year: 2018
+      },
+      {
+        name: 'Mazda',
+        year: 2016
+      }
+    ],
+    pageTitle: 'Hello React!'
+  }
+
+  changeTitleHandler = () => {
+    this.setState({
+      pageTitle: 'Changed Hello React!!!'
+    });
+  }
+
+  render() {
+    const divStyle = {
+      'textAlign': 'center'
+    };
+
+    const cars = this.state.cars;
+
+    return (
+      <div style={divStyle}>
+        <h1>{this.state.pageTitle}</h1>
+
+        <button onClick={this.changeTitleHandler}>Change Title</button>
+
+        {cars.map((car, index) => (
+          <Car key={index} name={car.name} year={car.year} />
+        ))}
+      </div>
+    );
+  }
+}
+
+export default App;
