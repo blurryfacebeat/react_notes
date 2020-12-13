@@ -1,0 +1,5 @@
+// App.js //
+Тут все про это
+        {cars.map((car, index) => (
+          <Car key={index} name={car.name} year={car.year} onChangeTitle={this.changeTitleHandler.bind(this, car.name)} />
+        ))}
