@@ -1,0 +1,60 @@
+// App.js //
+import React from 'react';
+import './App.css';
+import Car from  './Components/Car/Car';
+
+class App extends React.Component {
+  state = {
+    cars: [
+      {
+        name: 'Ford',
+        year: 2018
+      },
+      {
+        name: 'Mazda',
+        year: 2016
+      }
+    ],
+    pageTitle: 'Hello React!',
+    showCars: false
+  }
+
+  changeTitleHandler = (pageTitle) => {
+    this.setState({
+      pageTitle
+    });
+  }
+
+  toggleCarsHandler = () => {
+    this.setState({
+      showCars: !this.state.showCars
+    })
+  }
+
+  render() {
+    const divStyle = {
+      'textAlign': 'center'
+    };
+
+    const cars = this.state.cars;
+
+    // Можно было бы сделать отдельную переменную const cars = cars.map и прописать всю логику через if else вне JSX
+
+    return (
+      <div style={divStyle}>
+        <h1>{this.state.pageTitle}</h1>
+
+        <button onClick={this.toggleCarsHandler}>Toggle Cars</button>
+
+        { this.state.showCars
+          ?  cars.map((car, index) => (
+              <Car key={index} name={car.name} year={car.year} onChangeTitle={this.changeTitleHandler.bind(this, car.name)} />
+            ))
+          : null
+        }
+      </div>
+    );
+  }
+}
+
+export default App;
