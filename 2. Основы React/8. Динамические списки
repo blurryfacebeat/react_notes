@@ -1,0 +1,101 @@
+// App.js //
+import React from 'react';
+import './App.css';
+import Car from  './Components/Car/Car';
+
+class App extends React.Component {
+  state = {
+    cars: [
+      {
+        name: 'Ford',
+        year: 2018
+      },
+      {
+        name: 'Mazda',
+        year: 2016
+      }
+    ],
+    pageTitle: 'Hello React!',
+    showCars: false
+  }
+
+  onChangeName(name, index) {
+    const car = this.state.cars[index];
+    car.name = name;
+    // const cars = this.state.cars.concat();
+    // Разворачиваем все элементы массива внутри нового массива
+    const cars = [...this.state.cars];
+    cars[index] = car;
+    this.setState({
+      cars
+    });
+  }
+
+  // Мы не сможем внутри этой функции юзать this, но если бы делали стрелочную функцию, то могли бы не байндить, так как у нее нет своего контекста
+  deleteItem(index) {
+    const cars = [...this.state.cars];
+    cars.splice(index, 1);
+    this.setState({
+      cars
+    });
+  }
+
+  toggleCarsHandler = () => {
+    this.setState({
+      showCars: !this.state.showCars
+    })
+  }
+
+  render() {
+    const divStyle = {
+      'textAlign': 'center'
+    };
+
+    const cars = this.state.cars;
+
+    return (
+      <div style={divStyle}>
+        <h1>{this.state.pageTitle}</h1>
+
+        <button onClick={this.toggleCarsHandler}>Toggle Cars</button>
+
+        { this.state.showCars
+          ?  cars.map((car, index) => (
+              <Car
+                key={index}
+                name={car.name}
+                year={car.year}
+                onChangeName={event => this.onChangeName(event.target.value, index)}
+                // Если здесь не будем байндить this, то что будет, смотреть выше в коде коммент
+                deleteItem={this.deleteItem.bind(this, index)}
+              />
+            ))
+          : null
+        }
+      </div>
+    );
+  }
+}
+
+export default App;
+
+// Car.js //
+import React from 'react';
+
+const Car = (props) => {
+  return (
+    <div style={{
+      border: '1px solid #ccc',
+      marginBottom: '10px',
+      display: 'block',
+      padding: '10px'
+    }}>
+      <h3>Car name: {props.name}</h3>
+      <p>Year: <strong>{props.year}</strong></p>
+      <input type="text" onChange={props.onChangeName} value={props.name}></input>
+      <button onClick={props.deleteItem}>Delete</button>
+    </div>
+  );
+};
+
+export default Car;
