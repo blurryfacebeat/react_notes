@@ -1,0 +1,62 @@
+// Car.js //
+import React from 'react';
+import './Car.css';
+
+const Car = (props) => {
+  const inputClasses = ['input'];
+
+  if (props.name !== '') {
+    inputClasses.push('green');
+  } else {
+    inputClasses.push('red');
+  }
+
+  if (props.name.length > 4) {
+    inputClasses.push('shadow');
+  }
+
+  const style = {
+    border: '1px solid #ccc',
+    boxShadow: '0 4px 5px 0 rgba(0, 0, 0, .14)'
+  };
+
+  return (
+    <div className="Car" style={style}>
+      <h3>Car name: {props.name}</h3>
+      <p>Year: <strong>{props.year}</strong></p>
+      <input
+        type="text"
+        onChange={props.onChangeName}
+        value={props.name}
+        className={inputClasses.join(' ')}
+      />
+      <button onClick={props.deleteItem}>Delete</button>
+    </div>
+  );
+};
+
+export default Car;
+
+// Car.css //
+.Car {
+  margin-bottom: '10px';
+  display: 'block';
+  padding: '10px';
+  border-radius: 5px;
+}
+
+.input {
+  outline: none;
+}
+
+.input.green {
+  border: 1px solid green;
+}
+
+.input.red {
+  border: 1px solid red;
+}
+
+.input.shadow {
+  box-shadow: 1px 4px 10px 5px red;
+}
