@@ -1,0 +1,7 @@
+    Это и есть инлайн-стили
+    <div style={{
+      border: '1px solid #ccc',
+      marginBottom: '10px',
+      display: 'block',
+      padding: '10px'
+    }}>
